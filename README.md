@@ -1,5 +1,7 @@
-# temp-bot
+# Temp-Bot
 Interactive ESP8266 remote temperature/humidity sensor, controlled using Telegram Bot.
+We use an ESP8266 Feather Huzzah by Adafruit together with an Adafruit HDC1008 temperature and humidity sensor breakout board to retrieve temperature and humidity data.
+The user can interact with the remote device using Telegram Bot API.
 
 based on Telegram Library by Brian laugh
 https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot
@@ -9,7 +11,9 @@ First of all, you need to install th USB driver for the CP2104 USB-to-Serial chi
 see [link](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx).
 
 Then install the [Arduino IDE](http://www.arduino.cc/en/Main/Software).
-Enter http://arduino.esp8266.com/stable/package_esp8266com_index.json into Additional Board Manager URLs field in the Arduino v1.6.4+ preferences. Next, use the Board manager to install the ESP8266 package.
+
+Enter http://arduino.esp8266.com/stable/package_esp8266com_index.json into Additional Board Manager URLs field in the Arduino v1.6.4+ preferences.
+Next, use the Board manager to install the ESP8266 package.
 When you've restarted, select Adafruit HUZZAH ESP8266  from the Tools->Board dropdown, 80 MHz as the CPU frequency, and for Upload Speed, select 115200 baud; finally select the matching COM port for your  USB-Serial cable.
 
 ## LED blinking
