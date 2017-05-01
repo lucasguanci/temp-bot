@@ -16,6 +16,9 @@ Enter http://arduino.esp8266.com/stable/package_esp8266com_index.json into Addit
 Next, use the Board manager to install the ESP8266 package.
 When you've restarted, select NodeMCU 0.9 (ESP-12 Module) from the Tools->Board dropdown, 80 MHz as the CPU frequency, and for Upload Speed, select 115200 baud; finally select the matching COM port for your  USB-Serial cable.
 
+## NodeMCU pin layout
+https://pradeepsinghblog.files.wordpress.com/2016/04/nodemcu_pins.png
+
 ## LED blinking
 Test that everything is working as expected by completing the code to make an LED blink, see exercises/LST-01-ex-led-blink.ino
 
