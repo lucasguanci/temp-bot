@@ -30,12 +30,21 @@ this formula converts the number 0-1023 from the ADC into 0-3.3V.
 then, to convert volts into temperature, use this formula:
 Centigrade temperature = [(analog voltage in V) - 0.5] * 100
 
-Scaricare il codice see exercises/LST-02-ex-reading-temperature-sensor.ino e completarlo affinché si possa misurare anche l'umidità.
+Scaricare il codice che trovate in exercises/LST-02-ex-reading-temperature-sensor.ino e completarlo affinché si possa misurare anche l'umidità.
 
 ## Telegram Bot
+_Bots are simply Telegram accounts operated by software – not people – and they'll often have AI features._
+To create a new Bot you can ask \@BotFather. A new Bot has been created for you, that is \@bl_esp8266_bot which has the corresponding API token.
+In order to talk with the Bot you need to know your Telegram chat ID, by contacting \@myidbot and sending the command /getid.
+
+### Install Telegram library
 Install the ArduinoJson library written by Benoît Blanchon and the Universal Telegram Bot Library.
 Sketch > #include libreria > Aggiungi libreria da file .ZIP
 Scaricare il codice t-bot.ino e configurare Telegram Bot e i parametri di rete WiFi.
 Modificare il codice aggiungendo altre funzioni di interazione con l'utente.
 
-## Interactive remote temperature/humidity sensor controlled using Telegram Bot.
+### Interacting with the Bot
+Scaricare il codice che trovate in exercises/LST-02-ex-reading-temperature-sensor.ino
+e modificarlo creando nuove azioni a cui il bot possa rispondere.
+
+## Interactive remote temperature sensor controlled using Telegram Bot.
