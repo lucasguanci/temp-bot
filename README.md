@@ -34,8 +34,8 @@ Scaricare il codice che trovate in exercises/LST-02-ex-reading-temperature-senso
 
 ## Telegram Bot
 _Bots are simply Telegram accounts operated by software – not people – and they'll often have AI features._
-To create a new Bot you can ask \@BotFather. A new Bot has been created for you, that is \@bl_esp8266_bot which has the corresponding API token.
-In order to talk with the Bot you need to know your Telegram chat ID, by contacting \@myidbot and sending the command /getid.
+To create a new Bot you can ask __\@BotFather__. A new Bot has been created for you, that is __\@bl_esp8266_bot__ which has the corresponding API token.
+In order to talk with the Bot you need to know your Telegram chat ID, by contacting __\@myidbot__ and sending the command _/getid_.
 
 ### Install Telegram library
 Install the ArduinoJson library written by Benoît Blanchon and the Universal Telegram Bot Library.
@@ -44,7 +44,8 @@ Scaricare il codice t-bot.ino e configurare Telegram Bot e i parametri di rete W
 Modificare il codice aggiungendo altre funzioni di interazione con l'utente.
 
 ### Interacting with the Bot
-Scaricare il codice che trovate in exercises/LST-02-ex-reading-temperature-sensor.ino
+Scaricare il codice che trovate in
+exercises/LST-03-ex-telegram-bot.ino
 e modificarlo creando nuove azioni a cui il bot possa rispondere.
 
 ## Interactive remote temperature sensor controlled using Telegram Bot.
