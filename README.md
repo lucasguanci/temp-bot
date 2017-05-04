@@ -23,8 +23,9 @@ https://pradeepsinghblog.files.wordpress.com/2016/04/nodemcu_pins.png
 Test that everything is working as expected by completing the code to make an LED blink, see exercises/LST-01-ex-led-blink.ino
 
 ## Sensing Temperature using TMP36
-Using the TMP36 is easy, simply connect the left pin to power (2.7-5.5V) and the right pin to ground. Then the middle pin will have an analog voltage that is directly proportional (linear) to the temperature, i.e.<br/>
+Using the TMP36 is easy, simply connect the left pin to power (2.7-5.5V) and the right pin to ground. Then the middle pin will have an analog voltage that is directly proportional (linear) to the temperature, i.e.<br />
 Temp in °C = [(Vout in mV) - 500] / 10  
+
 To read temperature using an Arduino-like board powered at 3.3V:  
 voltage at pin in milliVolts = (reading from ADC) * (3.3/1024)  
 this formula converts the number 0-1023 from the ADC into 0-3.3V.
