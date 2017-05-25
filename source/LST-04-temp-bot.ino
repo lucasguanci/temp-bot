@@ -1,11 +1,11 @@
 /*
-    Interacting with a NodeMCU ESP8266
-    using Telegram Bot
+    Control a remote HDC1008 temperature and humidity sensor
+    using ESP8266 Feather Huzzah and Telegram Bot
     based on Telegram Library by Brian laugh
     https://github.com/witnessmenow/Universal-Arduino-Telegram-Bot
 
     created by Luca Sguanci <luca.sguanci@gmail.com>
-    May 2017
+    10 Mar 2017
     GPL license.
 */
 
@@ -15,8 +15,8 @@
 #include <Wire.h>
 
 //------- WiFi Settings -------
-char ssid[] = "*******";       // your network SSID (name)
-char password[] = "*******";  // your network key
+char ssid[] = "******";       // your network SSID (name)
+char password[] = "******";  // your network key
 
 // ------- Telegram config --------
 #define BOT_TOKEN "376233909:AAGcCra1I50H1bcWON8ckpyE3bNOLIQbqx0"
@@ -30,16 +30,17 @@ WiFiClientSecure client;
 // Telegram bot
 UniversalTelegramBot bot(BOT_TOKEN, client);
 
+// temperature sensor
+const int inputPin  = A0;
+
 String ipAddress = "";
 
 int Bot_mtbs = 1000; //mean time between scan messages
 long Bot_lasttime;   //last time messages' scan has been done
 
-// temprature sensor
-const int inputPin  = A0;
 
 void setup() {
-  // initialize serial communication
+
   Serial.begin(115200);
 
   // Set WiFi to station mode and disconnect from an AP if it was Previously
@@ -47,6 +48,7 @@ void setup() {
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
+
   // Attempt to connect to Wifi network:
   Serial.print("Connecting Wifi: ");
   Serial.println(ssid);
@@ -66,32 +68,41 @@ void setup() {
 }
 
 void loop() {
-
   // wait for messages
   if (millis() > Bot_lasttime + Bot_mtbs)  {
     int numNewMessages = bot.getUpdates(bot.last_message_received + 1);
     String msg = "";
     while (numNewMessages) {
+      Serial.println("got message");
       for (int i = 0; i < numNewMessages; i++) {
         // check message content
-        if ( bot.messages[i].text=="/hello" ) {
-          msg = "Hello";
-          sendTelegramMessage(bot.messages[i].chat_id,msg);
-        }
-        if ( bot.messages[i].text=="/who_are_you" ) {
-          msg = "I'm an ESP8266 System On Chip";
+        if ( bot.messages[i].text=="/TEMP" ) {
+          msg = readTemperature();
           sendTelegramMessage(bot.messages[i].chat_id,msg);
         }
       }
       numNewMessages = bot.getUpdates(bot.last_message_received + 1);
     }
+
     Bot_lasttime = millis();
   }
-
 }
 
 void sendTelegramMessage(String chat_id, String msg) {
+  digitalWrite(LED_PIN, HIGH);
   if (  bot.sendMessage(chat_id, msg, "") ) {
     Serial.println("Message has been sent.");
   }
+  delay(100);
+  digitalWrite(LED_PIN, LOW);
+}
+
+String readTemperature() {
+  String msg = "";
+  int value = analogRead(inputPin);
+  float v = value * (3.3/1024); // value in V
+  float temp = ( v - 0.5 ) * 100;  // converting from volts to degrees
+  msg = "Temperature: " + String(temp) + "°C";
+  Serial.println(msg);
+  return msg;
 }
