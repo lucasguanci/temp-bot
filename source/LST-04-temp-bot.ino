@@ -89,12 +89,10 @@ void loop() {
 }
 
 void sendTelegramMessage(String chat_id, String msg) {
-  digitalWrite(LED_PIN, HIGH);
   if (  bot.sendMessage(chat_id, msg, "") ) {
     Serial.println("Message has been sent.");
   }
   delay(100);
-  digitalWrite(LED_PIN, LOW);
 }
 
 String readTemperature() {
